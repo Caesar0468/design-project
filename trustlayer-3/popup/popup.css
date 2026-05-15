@@ -1,0 +1,225 @@
+/* TrustLayer v3 — Refined Popup Stylesheet */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #10b981;
+  --blue: #4f46e5; /* Slightly deeper indigo for that premium feel */
+  --red: #ef4444;
+  --orange: #f97316;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  --border: #e5e7eb;
+  --bg-subtle: #f9fafb;
+  --white: #ffffff;
+  --radius: 10px; /* Slightly rounder for modern UI */
+  --radius-sm: 6px;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+html {
+  /* Critical: Define base height for the extension container */
+  height: fit-content;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--white);
+  width: 360px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.popup-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.popup-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.popup-version {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-weight: 600;
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────────── */
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Increased gap for better breathing room */
+  padding: 16px;
+}
+
+.section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+/* ── Provider Grid (Fixing the Clipping) ────────────────────────────────────── */
+.provider-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.provider-card {
+  display: flex;
+  flex-direction: column; /* Stacked layout works better for long model names */
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--white);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  text-align: left;
+}
+
+.provider-card:hover {
+  border-color: var(--blue);
+  background: var(--bg-subtle);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.provider-card.card-active {
+  border-color: var(--blue);
+  background: #f5f3ff;
+  box-shadow: 0 0 0 1px var(--blue);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card-icon {
+  font-size: 18px;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-model {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-family: 'SF Mono', monospace;
+  opacity: 0.8;
+}
+
+/* ── Key Input Styling ─────────────────────────────────────────────────────── */
+.key-input-wrap {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.key-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  transition: all var(--transition);
+}
+
+.key-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.key-toggle {
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ── Save Button ────────────────────────────────────────────────────────────── */
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-top: 8px;
+}
+
+.save-btn:hover {
+  background: #4338ca;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+}
+
+.popup-footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+}

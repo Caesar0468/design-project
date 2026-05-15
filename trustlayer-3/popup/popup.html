@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrustLayer v3</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrap">
+
+    <header class="popup-header">
+      <div class="popup-brand">
+        <span class="popup-logo">✦</span>
+        <span class="popup-name">TrustLayer</span>
+        <span class="popup-version">v3</span>
+      </div>
+      <div class="popup-status" id="status-indicator">
+        <span class="status-dot" id="status-dot"></span>
+        <span class="status-label" id="status-label">Local Engine</span>
+      </div>
+    </header>
+
+    <div class="popup-body">
+
+      <div class="section-group">
+        <div class="section-label">Analysis provider</div>
+        <div class="provider-grid" id="provider-grid">
+
+          <button class="provider-card" data-provider="local" id="card-local">
+            <div class="card-top">
+              <div class="card-icon">⚙</div>
+              <div class="card-cost card-free">FREE</div>
+            </div>
+            <div class="card-info">
+              <div class="card-name">Local Engine</div>
+              <div class="card-model">5-signal heuristic</div>
+            </div>
+          </button>
+
+          <button class="provider-card" data-provider="gemini" id="card-gemini">
+            <div class="card-top">
+              <div class="card-icon card-icon-gemini">◆</div>
+              <div class="card-cost card-freetier">FREE TIER</div>
+            </div>
+            <div class="card-info">
+              <div class="card-name">Google Gemini</div>
+              <div class="card-model">3.1 Flash-Lite</div>
+            </div>
+          </button>
+
+          <button class="provider-card" data-provider="openai" id="card-openai">
+            <div class="card-top">
+              <div class="card-icon card-icon-openai">◉</div>
+              <div class="card-cost card-paid">PAID</div>
+            </div>
+            <div class="card-info">
+              <div class="card-name">OpenAI</div>
+              <div class="card-model">GPT-4.1 Mini</div>
+            </div>
+          </button>
+
+          <button class="provider-card" data-provider="anthropic" id="card-anthropic">
+            <div class="card-top">
+              <div class="card-icon card-icon-anthropic">▲</div>
+              <div class="card-cost card-paid">PAID</div>
+            </div>
+            <div class="card-info">
+              <div class="card-name">Anthropic</div>
+              <div class="card-model">4.6 Sonnet</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contextual Sections -->
+      <div class="info-box info-box-green" id="local-info" style="display:none">
+        <div class="info-box-icon">🔒</div>
+        <div class="info-box-text">
+          <strong>Private by Design.</strong> The local engine uses a zero-latency heuristic—no data leaves your browser.
+        </div>
+      </div>
+
+      <div class="api-key-section" id="gemini-key-section" style="display:none">
+        <label class="key-label" for="gemini-key">Google Gemini API Key</label>
+        <div class="key-input-wrap">
+          <input type="password" id="gemini-key" class="key-input" placeholder="AIza…" autocomplete="off" spellcheck="false">
+          <button class="key-toggle" data-target="gemini-key" type="button">👁</button>
+        </div>
+        <div class="key-hint">Starts with <code>AIza</code> · <a href="https://aistudio.google.com/app/apikey" target="_blank">Get key</a></div>
+      </div>
+
+      <div class="api-key-section" id="openai-key-section" style="display:none">
+        <label class="key-label" for="openai-key">OpenAI API Key</label>
+        <div class="key-input-wrap">
+          <input type="password" id="openai-key" class="key-input" placeholder="sk-…" autocomplete="off" spellcheck="false">
+          <button class="key-toggle" data-target="openai-key" type="button">👁</button>
+        </div>
+        <div class="key-hint">Starts with <code>sk-</code> · <a href="https://platform.openai.com/api-keys" target="_blank">Get key</a></div>
+      </div>
+
+      <div class="api-key-section" id="anthropic-key-section" style="display:none">
+        <label class="key-label" for="anthropic-key">Anthropic API Key</label>
+        <div class="key-input-wrap">
+          <input type="password" id="anthropic-key" class="key-input" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
+          <button class="key-toggle" data-target="anthropic-key" type="button">👁</button>
+        </div>
+        <div class="key-hint">Starts with <code>sk-ant-</code> · <a href="https://console.anthropic.com/settings/keys" target="_blank">Get key</a></div>
+      </div>
+
+      <div class="error-msg" id="error-msg" style="display:none"></div>
+
+      <button class="save-btn" id="save-btn">Save Settings</button>
+
+      <div class="save-confirm" id="save-confirm" style="display:none">
+        <span>✓ Configuration updated</span>
+      </div>
+
+    </div>
+
+    <footer class="popup-footer">
+      Compatible with ChatGPT · Claude · Gemini · Perplexity
+    </footer>
+  </div>
+
+  <script src="../utils/constants.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
